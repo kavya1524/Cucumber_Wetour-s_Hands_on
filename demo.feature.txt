@@ -1,0 +1,48 @@
+@tag
+Feature: WebTours
+
+  @tag1
+  Scenario: 
+    
+    Given Launch Browser
+    And Login with invalid data
+    When  username1 "Kavyashree"
+    When  Password1 "Kavya@123"
+    Then  click on login button
+   
+  @tag2
+  Scenario:
+  
+    
+    Given username2 "Kavya"
+    When Password2 "Kavya@123"
+    And click on login button1
+    Then click on logout button1
+    
+   @tag3
+  Scenario:
+  
+    Given Login with valid data2
+    Given username3 "Kavya"
+    When Password3 "Kavya@123"
+    And click on login button2
+    Then click on logout button2
+
+  @tag4
+  Scenario Outline: Title of your scenario outline
+    Given I want to write a step with <username1> "Kavyashree"
+    When I check for the <password1> "Kavya@123"
+    Then I verify the <status> "Fail"
+    Given I want to write a step with <username1> "Kavya"
+    When I check for the <password1> "Kavya@123"
+    Then I verify the <status> "success"
+    Given I want to write a step with <username1> "Kavya"
+    When I check for the <password1> "Kavya@123"
+    Then I verify the <status> "success"
+      
+
+    Examples: 
+      | username  | password  |     status  |
+      | username1 | password1 |     Fail    |
+      | username2 | password1 |     success |
+      | username3 | password1 |	    success |

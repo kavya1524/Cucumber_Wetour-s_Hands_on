@@ -1,0 +1,88 @@
+package defenation;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.cucumber.java.en.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class stepdefenation {
+	
+	
+	WebDriver wd;
+	String url ="http://localhost:1080/webtours";
+	
+	@Before	
+		@Given("Launch Browser")
+		public void launch_browser() {
+       
+		    WebDriverManager.chromedriver().setup();
+		    wd= new ChromeDriver();
+		    wd.get(url);
+		    wd.manage().window().maximize();
+		    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+		}
+	
+	@Test
+		@Given("Login with invalid data")
+		public void login_with_invalid_data() {
+		}
+		@When("username1 {string}")
+		public void username1(String string) {
+			wd.findElement(By.name("username")).sendKeys(string);
+		}
+		@When("Password1 {string}")
+		public void password1(String string) {
+			wd.findElement(By.name("password")).sendKeys(string);
+		}
+		@Then("click on login button")
+		public void click_on_login_button() {
+			wd.findElement(By.name("login")).click();
+		}
+		
+		
+		@Test
+		@Given("username2 {string}")
+		public void username2(String string) {
+			wd.findElement(By.name("username")).sendKeys(string);
+		}
+		@When("Password1 {string}")
+		public void password2(String string) {
+			wd.findElement(By.name("password")).sendKeys(string);
+		}
+		@When("click on login button")
+		public void click_on_login_button1() {
+			wd.findElement(By.name("login")).click();
+		}
+		@Then("click on logout button")
+		public void click_on_logout_button1() {
+			wd.findElement(By.xpath("//*[@alt='SignOff Button']")).click();
+		    
+		}
+		
+		@Test
+		       @Given("username3 {string}")
+				public void username3(String string) {
+					wd.findElement(By.name("username")).sendKeys(string);
+				}
+				@When("Password1 {string}")
+				public void password3(String string) {
+					wd.findElement(By.name("password")).sendKeys(string);
+				}
+				@When("click on login button")
+				public void click_on_login_button2() {
+					wd.findElement(By.name("login")).click();
+				}
+				@Then("click on logout button")
+				public void click_on_logout_button2() {
+					wd.findElement(By.xpath("//*[@alt='SignOff Button']")).click();
+				}
+	
+	
+}
